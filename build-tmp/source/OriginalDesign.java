@@ -1,3 +1,19 @@
+import processing.core.*; 
+import processing.data.*; 
+import processing.event.*; 
+import processing.opengl.*; 
+
+import java.util.HashMap; 
+import java.util.ArrayList; 
+import java.io.File; 
+import java.io.BufferedReader; 
+import java.io.PrintWriter; 
+import java.io.InputStream; 
+import java.io.OutputStream; 
+import java.io.IOException; 
+
+public class OriginalDesign extends PApplet {
+
 int colr = 0;
 int colg = 100;
 int colb = 200;
@@ -11,12 +27,12 @@ int x1 = 170;
 int x2 = 230;
 int y1 = 0;
 int y2 = 400;
-void setup()
+public void setup()
 {
   size(400,400);
 }
 
-void draw()
+public void draw()
 {
   background(colr, colg, colb);
   for(int i = 1; i < 100; i++)
@@ -92,7 +108,7 @@ void draw()
 
 }
 
-void groundAndSky()
+public void groundAndSky()
 {
 	noStroke();
 	fill(0, 174, 255,20);
@@ -107,7 +123,7 @@ void groundAndSky()
 	//fill(55, 158, 55);
 	//rect(0,300,400,100);
 }
-void hair()
+public void hair()
 {
 	rotate(PI/12);
 	fill(255, 255, 255);
@@ -120,7 +136,7 @@ void hair()
 	fill(0, 0, 0,30);
 	triangle(174,-12,175,26,165,25);
 }
-void head()
+public void head()
 {
 	fill(158, 98, 98);
 	rect(61,149,220,100,50);
@@ -144,7 +160,7 @@ void head()
 	fill(255, 0, 0);
 	rect(55,22,237,10);
 }
-void eyes()
+public void eyes()
 {
 	fill(251, 255, 0);
 	ellipse(128,119,70,70);
@@ -168,12 +184,12 @@ void eyes()
 	ellipse(215,119,82,82);
 	ellipse(215,119,84,84);
 }
-void body()
+public void body()
 {
 	fill(0, 136, 255);
 	bezier(-3,444,-75,181,417,181,351,444);
 }
-void beard()
+public void beard()
 {
 	fill(255, 255, 255);
 	bezier(65,316,84,99,273,235,282,316);
@@ -191,7 +207,7 @@ void beard()
 	bezier(73,321,76,399,138,515,177,215);
 	bezier(273,321,267,399,220,515,181,215);
 }
-void arm()
+public void arm()
 {
 	rotate(PI/12);
 	fill(158, 98, 98);
@@ -211,15 +227,24 @@ void arm()
 	arc(438,102,71,60,14*PI/45,683*PI/1000);
 }
 
-void trippyUp(int leftX, int rightX, int y, int colorR, int colorG, int colorB)
+public void trippyUp(int leftX, int rightX, int y, int colorR, int colorG, int colorB)
 {
 	noStroke();
 	fill(colorR, colorG, colorB);
 	bezier(-40,y,leftX,y-100,rightX,y-100,440,y);
 }
-void trippyDown(int leftX, int rightX, int y, int colorR, int colorG, int colorB)
+public void trippyDown(int leftX, int rightX, int y, int colorR, int colorG, int colorB)
 {
 	noStroke();
 	fill(colorR, colorG, colorB);
 	bezier(-40,y,leftX,y+100,rightX,y+100,440,y);
+}
+  static public void main(String[] passedArgs) {
+    String[] appletArgs = new String[] { "OriginalDesign" };
+    if (passedArgs != null) {
+      PApplet.main(concat(appletArgs, passedArgs));
+    } else {
+      PApplet.main(appletArgs);
+    }
+  }
 }
